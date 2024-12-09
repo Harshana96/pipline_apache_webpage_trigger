@@ -34,7 +34,7 @@ pipeline {
                             cat ~/.ssh/known_hosts
 
                             # Step 4: Use SSH to log in and execute a command
-                            ssh -o StrictHostKeyChecking=no harshana-1@ip-172-31-22-226 "echo 'Successfully connected to the server!'"
+                            ssh -o StrictHostKeyChecking=no hashj@ip-172-31-22-226 "echo 'Successfully connected to the server!'"
                         '''
                     }
                 }
