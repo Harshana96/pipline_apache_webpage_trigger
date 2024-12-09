@@ -18,13 +18,13 @@ pipeline {
         }
     }
 
-    stage('Copy to Remote Server') {
-            steps {
-                script {
-                    sshagent(['ssh-connection-apache-server']) {
+    // stage('Copy to Remote Server') {
+    //         steps {
+    //             script {
+    //                 sshagent(['ssh-connection-apache-server']) {
                        
-                    }
-                }
-            }
-        }
+    //                 }
+    //             }
+    //         }
+    //     }
 }
