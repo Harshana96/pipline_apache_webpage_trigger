@@ -2,9 +2,18 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Check Local File') {
             steps {
-                echo 'Hello, World!'
+                script {
+                    sh '''
+                        echo "+++++++++Current directory:+++++++++"
+                        pwd
+                        echo "+++++++++Listing files:+++++++++"
+                        ls -l
+                        echo "+++++++++Displaying index.html content:+++++++++"
+                        cat index.html
+                    '''
+                }
             }
         }
     }
