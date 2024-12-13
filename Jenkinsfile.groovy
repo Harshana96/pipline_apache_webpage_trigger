@@ -59,5 +59,20 @@ pipeline {
                 }
             }
         }
+
+        stage('List Folders in S3') {
+            steps {
+                script {
+                    // Specify the S3 bucket name (replace with your actual bucket name)
+                    def bucketName = 'hash2buket'
+
+                    // List all folders in the specified S3 bucket
+                    echo 'Listing folders in S3 bucket...'
+                    sh """
+                        aws s3 ls s3://${bucketName}/ --recursive | grep 'PRE' | awk '{print \$2}'
+                    """
+                }
+            }
+        }
     }
 }
