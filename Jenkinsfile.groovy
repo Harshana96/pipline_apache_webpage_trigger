@@ -19,12 +19,25 @@ pipeline {
     }
 
     stages {
+        stage('Get Caller Identity') {
+            steps {
+                script {
+                    // Run AWS CLI command to get the caller identity and print the details
+                    echo 'Getting AWS Caller Identity...'
+                    sh '''
+                        echo "Caller Identity:"
+                        aws sts get-caller-identity --query "Arn" --output text
+                    '''
+                }
+            }
+        }
         stage('List S3 Buckets') {
             steps {
                 script {
-                    // AWS CLI command to list all S3 buckets using direct access keys
+                    // List all S3 buckets in the AWS account
+                    echo 'Listing S3 Buckets...'
                     sh '''
-                        aws s3api list-buckets --query "Buckets[].Name" 
+                        aws s3api list-buckets --query "Buckets[].Name" --output text
                     '''
                 }
             }
