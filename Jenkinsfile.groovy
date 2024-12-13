@@ -54,7 +54,7 @@ pipeline {
 
                     // Create the folder in the S3 bucket
                     sh """
-                        aws s3 cp --recursive ./ ${bucketName}/folders/${currentDateTime}/
+                        aws s3 cp --recursive ./ ${bucketName}/${currentDateTime}/
                     """
                 }
             }
