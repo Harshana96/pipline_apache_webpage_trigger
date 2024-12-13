@@ -50,7 +50,7 @@ pipeline {
                     echo "Creating folder with name: ${currentDateTime}"
 
                     // Specify the S3 bucket name (replace with your actual bucket name)
-                    def bucketName = 'your-s3-bucket-name'
+                    def bucketName = 'hash2buket'
 
                     // Create the folder in the S3 bucket
                     sh """
