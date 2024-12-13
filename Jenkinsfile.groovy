@@ -41,5 +41,23 @@ pipeline {
                 }
             }
         }
+
+        stage('Create Folder in S3') {
+            steps {
+                script {
+                    // Get the current date and time formatted as YYYY-MM-DD-HHMMSS
+                    def currentDateTime = new Date().format('yyyy-MM-dd-HHmmss', TimeZone.getTimeZone('UTC'))
+                    echo "Creating folder with name: ${currentDateTime}"
+
+                    // Specify the S3 bucket name (replace with your actual bucket name)
+                    def bucketName = 'your-s3-bucket-name'
+
+                    // Create the folder in the S3 bucket
+                    sh """
+                        aws s3 cp --recursive ./ ${bucketName}/folders/${currentDateTime}/
+                    """
+                }
+            }
+        }
     }
 }
