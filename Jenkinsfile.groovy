@@ -42,7 +42,7 @@ pipeline {
             }
         }
 
-        stage('Create Folder in S3') {
+        stage('Create Folder in S3 and Upload index.html') {
             steps {
                 script {
                     // Get the current date and time formatted as YYYY-MM-DD-HHmmss
@@ -52,9 +52,9 @@ pipeline {
                     // Specify the S3 bucket name (replace with your actual bucket name)
                     def bucketName = 'hash2buket'
 
-                    // Create the folder in the S3 bucket (by uploading an empty file)
+                    // Create the folder and upload index.html file to the folder in the S3 bucket
                     sh """
-                        aws s3 cp ./ s3://${bucketName}/folders/${currentDateTime}/ --recursive
+                        aws s3 cp index.html s3://${bucketName}/folders/${currentDateTime}/index.html
                     """
                 }
             }
