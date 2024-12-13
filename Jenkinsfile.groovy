@@ -16,9 +16,7 @@ pipeline {
                 }
             }
         }
-    }
 
-    stages {
         stage('Get Caller Identity') {
             steps {
                 script {
@@ -31,6 +29,7 @@ pipeline {
                 }
             }
         }
+
         stage('List S3 Buckets') {
             steps {
                 script {
@@ -43,6 +42,4 @@ pipeline {
             }
         }
     }
-
-    
 }
